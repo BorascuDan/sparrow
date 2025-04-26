@@ -82,6 +82,7 @@ class LoginActivity : AppCompatActivity() {
 
         RetrofitClient.instance.loginUser(loginRequest)
             .enqueue(object : Callback<ApiResponse<Map<String, User>>> {
+                // Inside LoginActivity.kt, update the onResponse method in the loginUser function
                 override fun onResponse(
                     call: Call<ApiResponse<Map<String, User>>>,
                     response: Response<ApiResponse<Map<String, User>>>
@@ -90,12 +91,18 @@ class LoginActivity : AppCompatActivity() {
                         val apiResponse = response.body()
                         if (apiResponse?.success == true) {
                             val user = apiResponse.data?.get("user")
+
+                            // Get the token from the header
+                            val authHeader = response.headers()["Authorization"]
+                            val token = authHeader?.replace("Bearer ", "") ?: ""
+
                             if (user != null) {
-                                // Save user data in SharedPreferences
+                                // Save user data and token in SharedPreferences
                                 val editor = sharedPreferences.edit()
                                 editor.putInt("USER_ID", user.id)
                                 editor.putString("USERNAME", user.username)
                                 editor.putString("EMAIL", user.email)
+                                editor.putString("AUTH_TOKEN", token) // Save the token
                                 editor.apply()
 
                                 Toast.makeText(
