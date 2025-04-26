@@ -49,6 +49,8 @@ class MainActivity : AppCompatActivity() {
             // Clear SharedPreferences
             sharedPreferences.edit().clear().apply()
 
+            WearDataLayerService.sendAuthStatusToWear(this)
+
             // Navigate to login screen
             startActivity(Intent(this, LoginActivity::class.java))
             finish()

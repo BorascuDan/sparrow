@@ -97,13 +97,14 @@ class LoginActivity : AppCompatActivity() {
                             val token = authHeader?.replace("Bearer ", "") ?: ""
 
                             if (user != null) {
-                                // Save user data and token in SharedPreferences
                                 val editor = sharedPreferences.edit()
                                 editor.putInt("USER_ID", user.id)
                                 editor.putString("USERNAME", user.username)
                                 editor.putString("EMAIL", user.email)
-                                editor.putString("AUTH_TOKEN", token) // Save the token
+                                editor.putString("AUTH_TOKEN", token)
                                 editor.apply()
+
+                                WearDataLayerService.sendAuthStatusToWear(this@LoginActivity)
 
                                 Toast.makeText(
                                     this@LoginActivity,
@@ -111,7 +112,6 @@ class LoginActivity : AppCompatActivity() {
                                     Toast.LENGTH_SHORT
                                 ).show()
 
-                                // Navigate to main screen
                                 startActivity(Intent(this@LoginActivity, MainActivity::class.java))
                                 finish()
                             }
@@ -132,6 +132,7 @@ class LoginActivity : AppCompatActivity() {
                 }
 
                 override fun onFailure(call: Call<ApiResponse<Map<String, User>>>, t: Throwable) {
+                    print(t.message)
                     Toast.makeText(
                         this@LoginActivity,
                         "Network error: ${t.message}",
