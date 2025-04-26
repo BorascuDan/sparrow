@@ -99,8 +99,9 @@ class LoginActivity : AppCompatActivity() {
                             if (user != null) {
                                 val editor = sharedPreferences.edit()
                                 editor.putInt("USER_ID", user.id)
-                                editor.putString("USERNAME", user.username)
-                                editor.putString("EMAIL", user.email)
+                                                 editor.putString("USERNAME", user.username)
+                      editor.putString("EMAIL", user.email)
+
                                 editor.putString("AUTH_TOKEN", token)
                                 editor.apply()
 
