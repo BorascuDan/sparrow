@@ -11,6 +11,15 @@ data class LoginRequest(
     val password: String
 )
 
+data class UserProfileData(
+    val user_id: String,
+    val age: Int?,
+    val weight: Float?,
+    val height: Int?,
+    val gender: Boolean,
+    val profile_completed: Boolean
+)
+
 data class LocationRequest(
     val location: String
 )

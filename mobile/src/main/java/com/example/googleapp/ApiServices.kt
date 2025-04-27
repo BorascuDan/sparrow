@@ -28,4 +28,12 @@ interface ApiService {
         @Header("Authorization") token: String,
         @Body locationRequest: LocationRequest
     ): Call<ApiResponse<Int>>
+
+    // User profile endpoint
+    @GET("api/users/personalDetails")  // Using endpoint from your code
+    fun getUserProfile(@Header("Authorization") token: String): Call<ApiResponse<UserProfileData>>
+
+    // Delete user endpoint
+    @POST("api/users/delete")
+    fun deleteUser(@Header("Authorization") token: String): Call<ApiResponse<String>>
 }

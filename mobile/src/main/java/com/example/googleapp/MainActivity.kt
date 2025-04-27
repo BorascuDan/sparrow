@@ -33,6 +33,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var imageViewDrunkness: ImageView
     private lateinit var buttonOpenMaps: Button
     private lateinit var buttonOrderUber: Button
+    private lateinit var buttonProfile: Button  // Added profile button
     private val handler = Handler(Looper.getMainLooper())
 
     // Updated runnable that will refresh all data every 4 seconds
@@ -66,6 +67,12 @@ class MainActivity : AppCompatActivity() {
         logoutButton = findViewById(R.id.buttonLogout)
         buttonOpenMaps = findViewById(R.id.buttonOpenMaps)
         buttonOrderUber = findViewById(R.id.buttonOrderUber)
+        buttonProfile = findViewById(R.id.buttonProfile)  // Initialize the profile button
+
+        // Set click listener for the Profile button
+        buttonProfile.setOnClickListener {
+            startActivity(Intent(this, ProfileActivity::class.java))
+        }
 
         // Set click listener for the Open Maps button
         buttonOpenMaps.setOnClickListener {

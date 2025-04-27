@@ -1,160 +1,183 @@
-<androidx.constraintlayout.widget.ConstraintLayout
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/main"
-    android:padding="24dp"
+    android:fillViewport="true"
+    android:fitsSystemWindows="true"
     android:background="#f8f8f8"
     tools:context=".MainActivity">
 
-    <!-- App Icon -->
-    <ImageView
-        android:id="@+id/imageViewAppIcon"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:src="@drawable/ic_launcher_foreground"
-        android:background="@drawable/ic_launcher_background"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="40dp" />
-
-    <!-- Welcome Text -->
-    <TextView
-        android:id="@+id/textViewWelcome"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Welcome back, User!"
-        android:textColor="#486E4A"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:fontFamily="@font/playfair_display_regular"
-        app:layout_constraintTop_toBottomOf="@id/imageViewAppIcon"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="24dp" />
+        android:padding="24dp">
 
-    <!-- Stats Section -->
-    <TextView
-        android:id="@+id/textViewTotalDrinksToday"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Total Drinks Today: 0"
-        android:textColor="#486E4A"
-        android:textSize="18sp"
-        android:fontFamily="@font/montserrat_regular"
-        app:layout_constraintTop_toBottomOf="@id/textViewWelcome"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="24dp" />
+        <!-- App Icon -->
+        <ImageView
+            android:id="@+id/imageViewAppIcon"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/ic_launcher_foreground"
+            android:background="@drawable/ic_launcher_background"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="40dp" />
 
-    <TextView
-        android:id="@+id/textViewTotalDrinksAtLocation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Total Drinks at Location: 0"
-        android:textColor="#486E4A" 
-        android:textSize="18sp"
-        android:fontFamily="@font/montserrat_regular"
-        app:layout_constraintTop_toBottomOf="@id/textViewTotalDrinksToday"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp" />
+        <!-- Welcome Text -->
+        <TextView
+            android:id="@+id/textViewWelcome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Welcome back, User!"
+            android:textColor="#486E4A"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/playfair_display_regular"
+            app:layout_constraintTop_toBottomOf="@id/imageViewAppIcon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="24dp" />
 
-   <!-- Drunkness Level Section -->
-<TextView
-    android:id="@+id/textViewDrunknessTitle"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Current Drunkness Level"
-    android:textColor="#486E4A"
-    android:textSize="16sp"
-    android:fontFamily="@font/montserrat_regular"
-    app:layout_constraintTop_toBottomOf="@id/textViewTotalDrinksAtLocation"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    android:layout_marginTop="24dp" />
+        <!-- Stats Section -->
+        <TextView
+            android:id="@+id/textViewTotalDrinksToday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total Drinks Today: 0"
+            android:textColor="#486E4A"
+            android:textSize="18sp"
+            android:fontFamily="@font/montserrat_regular"
+            app:layout_constraintTop_toBottomOf="@id/textViewWelcome"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="24dp" />
 
-<ImageView
-    android:id="@+id/imageViewDrunkness"
-    android:layout_width="120dp"
-    android:layout_height="120dp"
-    android:src="@drawable/beer_pint_1"
-    android:contentDescription="Drunkness Level Indicator"
-    app:layout_constraintTop_toBottomOf="@id/textViewDrunknessTitle"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    android:layout_marginTop="8dp" />
+        <TextView
+            android:id="@+id/textViewTotalDrinksAtLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total Drinks at Location: 0"
+            android:textColor="#486E4A"
+            android:textSize="18sp"
+            android:fontFamily="@font/montserrat_regular"
+            app:layout_constraintTop_toBottomOf="@id/textViewTotalDrinksToday"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp" />
 
-    <!-- Temperature Text -->
-    <TextView
-        android:id="@+id/textViewTemperature"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="24°C"
-        android:textSize="24sp"
-        android:textColor="#486E4A"
-        android:textStyle="bold"
-        android:fontFamily="@font/montserrat_bold"
-        app:layout_constraintTop_toBottomOf="@id/imageViewDrunkness"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="24dp" />
+        <!-- Drunkness Level Section -->
+        <TextView
+            android:id="@+id/textViewDrunknessTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Current Drunkness Level"
+            android:textColor="#486E4A"
+            android:textSize="16sp"
+            android:fontFamily="@font/montserrat_regular"
+            app:layout_constraintTop_toBottomOf="@id/textViewTotalDrinksAtLocation"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="24dp" />
 
-   
+        <ImageView
+            android:id="@+id/imageViewDrunkness"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:src="@drawable/beer_pint_1"
+            android:contentDescription="Drunkness Level Indicator"
+            app:layout_constraintTop_toBottomOf="@id/textViewDrunknessTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="8dp" />
 
-   <!-- Button Section - Vertically Aligned Smaller Buttons -->
-<com.google.android.material.button.MaterialButton
-    android:id="@+id/buttonOpenMaps"
-    android:layout_width="200dp"
-    android:layout_height="50dp"
-    android:text="Find Bars"
-    android:textAllCaps="false"
-    android:textSize="14sp"
-    android:fontFamily="@font/montserrat_bold"
-    android:textColor="#FFFFFF"
-    android:backgroundTint="#86C28B"
-    app:cornerRadius="12dp"
-    android:layout_marginTop="32dp"
-    app:layout_constraintTop_toBottomOf="@id/textViewTemperature"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent" />
+        <!-- Temperature Text -->
+        <TextView
+            android:id="@+id/textViewTemperature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="24°C"
+            android:textSize="24sp"
+            android:textColor="#486E4A"
+            android:textStyle="bold"
+            android:fontFamily="@font/montserrat_bold"
+            app:layout_constraintTop_toBottomOf="@id/imageViewDrunkness"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="24dp" />
 
-<!-- Order Uber Button -->
-<com.google.android.material.button.MaterialButton
-    android:id="@+id/buttonOrderUber"
-    android:layout_width="200dp"
-    android:layout_height="50dp"
-    android:text="Order Uber"
-    android:textAllCaps="false"
-    android:textSize="14sp"
-    android:fontFamily="@font/montserrat_bold"
-    android:textColor="#FFFFFF"
-    android:backgroundTint="#86C28B"
-    app:cornerRadius="12dp"
-    android:layout_marginTop="16dp"
-    app:layout_constraintTop_toBottomOf="@id/buttonOpenMaps"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent" />
+        <!-- Button Section - Vertically Aligned Smaller Buttons -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonOpenMaps"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:text="Find Bars"
+            android:textAllCaps="false"
+            android:textSize="14sp"
+            android:fontFamily="@font/montserrat_bold"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#86C28B"
+            app:cornerRadius="12dp"
+            android:layout_marginTop="32dp"
+            app:layout_constraintTop_toBottomOf="@id/textViewTemperature"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
-<!-- Logout Button -->
-<com.google.android.material.button.MaterialButton
-    android:id="@+id/buttonLogout"
-    android:layout_width="200dp"
-    android:layout_height="50dp"
-    android:text="Logout"
-    android:textAllCaps="false"
-    android:textSize="14sp"
-    android:fontFamily="@font/montserrat_bold"
-    android:textColor="#FFFFFF"
-    android:backgroundTint="#486E4A"
-    app:cornerRadius="12dp"
-    android:layout_marginTop="16dp"
-    app:layout_constraintTop_toBottomOf="@id/buttonOrderUber"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent" />
+        <!-- Order Uber Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonOrderUber"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:text="Order Uber"
+            android:textAllCaps="false"
+            android:textSize="14sp"
+            android:fontFamily="@font/montserrat_bold"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#86C28B"
+            app:cornerRadius="12dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@id/buttonOpenMaps"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
+        <!-- Profile Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonProfile"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:text="Profile"
+            android:textAllCaps="false"
+            android:textSize="14sp"
+            android:fontFamily="@font/montserrat_bold"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#86C28B"
+            app:cornerRadius="12dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@id/buttonOrderUber"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <!-- Logout Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonLogout"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:text="Logout"
+            android:textAllCaps="false"
+            android:textSize="14sp"
+            android:fontFamily="@font/montserrat_bold"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#486E4A"
+            app:cornerRadius="12dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="24dp"
+            app:layout_constraintTop_toBottomOf="@id/buttonProfile"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
