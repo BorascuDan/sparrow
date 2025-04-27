@@ -17,6 +17,8 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class LoginActivity : AppCompatActivity() {
+
+
     private lateinit var emailEditText: EditText
     private lateinit var passwordEditText: EditText
     private lateinit var loginButton: Button
@@ -54,6 +56,10 @@ class LoginActivity : AppCompatActivity() {
 
         // Register link click listener
         registerLinkTextView.setOnClickListener {
+            val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_in_left)
+
             startActivity(Intent(this, RegisterActivity::class.java))
         }
     }
@@ -142,4 +148,5 @@ class LoginActivity : AppCompatActivity() {
                 }
             })
     }
+
 }

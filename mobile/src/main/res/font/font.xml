@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<font-family xmlns:app="http://schemas.android.com/apk/res-auto">
+    <!-- Playfair Display - Elegant serif font for headings -->
+    <font
+        app:fontStyle="normal"
+        app:fontWeight="400"
+        app:font="@font/playfair_display_regular" />
+    <font
+        app:fontStyle="normal"
+        app:fontWeight="700"
+        app:font="@font/playfair_display_bold" />
+        
+    <!-- Montserrat - Clean sans-serif font for body text -->
+    <font
+        app:fontStyle="normal"
+        app:fontWeight="400"
+        app:font="@font/montserrat_regular" />
+    <font
+        app:fontStyle="normal"
+        app:fontWeight="700"
+        app:font="@font/montserrat_bold" />
+</font-family>

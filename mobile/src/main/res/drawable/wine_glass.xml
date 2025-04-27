@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="128dp"
+    android:height="256dp"
+    android:viewportWidth="128"
+    android:viewportHeight="256">
+
+    <!-- Glass Bowl -->
+    <path
+        android:fillColor="#E0E0E0"
+        android:pathData="M32,40
+                          C32,10 96,10 96,40
+                          C96,80 64,120 64,120
+                          C64,120 32,80 32,40Z" />
+
+    <!-- Wine inside the Glass -->
+    <path
+        android:fillColor="#8B0000"
+        android:pathData="M36,50
+                          C36,30 92,30 92,50
+                          C92,60 64,90 64,90
+                          C64,90 36,60 36,50Z" />
+
+    <!-- Glass Stem (fixed) -->
+    <path
+        android:fillColor="#E0E0E0"
+        android:pathData="M60,120 h8 v80 h-8 z" />
+
+    <!-- Glass Base -->
+    <path
+        android:fillColor="#C0C0C0"
+        android:pathData="M40,210
+                          Q64,230 88,210
+                          Q64,250 40,210Z" />
+</vector>
+

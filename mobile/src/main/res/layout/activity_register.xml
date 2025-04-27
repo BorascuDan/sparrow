@@ -1,83 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
+    android:padding="24dp"
+    android:background="#f8f8f8"
     tools:context=".RegisterActivity">
 
+    <!-- App Icon -->
+    <ImageView
+        android:id="@+id/imageViewAppIcon"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/ic_launcher_foreground"
+        android:background="@drawable/ic_launcher_background"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="40dp" />
+
+    <!-- Title -->
     <TextView
         android:id="@+id/textViewRegisterTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Create Account"
-        android:textSize="24sp"
+        android:textSize="32sp"
         android:textStyle="bold"
-        android:layout_marginTop="32dp"
-        app:layout_constraintTop_toTopOf="parent"
+        android:fontFamily="@font/playfair_display_regular"
+        android:textColor="#486E4A"
+        app:layout_constraintTop_toBottomOf="@id/imageViewAppIcon"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="24dp" />
 
-    <EditText
-        android:id="@+id/editTextUsername"
+    <!-- Subtitle -->
+    <TextView
+        android:id="@+id/textViewRegisterSubtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign up to get started"
+        android:textSize="16sp"
+        android:fontFamily="@font/montserrat_regular"
+        android:textColor="#8B8B8B"
+        app:layout_constraintTop_toBottomOf="@id/textViewRegisterTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp" />
+
+    <!-- Username Input -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutUsername"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:hint="Username"
-        android:inputType="text"
-        android:padding="12dp"
-        android:background="@drawable/edit_text_background"
-        app:layout_constraintTop_toBottomOf="@id/textViewRegisterTitle"
+        app:boxStrokeColor="#86C28B"
+        app:hintTextColor="#86C28B"
+        android:textColorHint="#ACACAC"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:layout_constraintTop_toBottomOf="@id/textViewRegisterSubtitle"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent">
 
-    <EditText
-        android:id="@+id/editTextEmail"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextUsername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:fontFamily="@font/montserrat_regular"
+            android:textColor="#486E4A" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Email Input -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutEmail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:hint="Email"
-        android:inputType="textEmailAddress"
-        android:padding="12dp"
-        android:background="@drawable/edit_text_background"
-        app:layout_constraintTop_toBottomOf="@id/editTextUsername"
+        app:boxStrokeColor="#86C28B"
+        app:hintTextColor="#86C28B"
+        android:textColorHint="#ACACAC"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:layout_constraintTop_toBottomOf="@id/textInputLayoutUsername"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent">
 
-    <EditText
-        android:id="@+id/editTextPassword"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:fontFamily="@font/montserrat_regular"
+            android:textColor="#486E4A" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Password Input -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutPassword"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:hint="Password"
-        android:inputType="textPassword"
-        android:padding="12dp"
-        android:background="@drawable/edit_text_background"
-        app:layout_constraintTop_toBottomOf="@id/editTextEmail"
+        app:boxStrokeColor="#86C28B"
+        app:hintTextColor="#86C28B"
+        android:textColorHint="#ACACAC"
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="#86C28B"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:layout_constraintTop_toBottomOf="@id/textInputLayoutEmail"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent">
 
-    <Button
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:fontFamily="@font/montserrat_regular"
+            android:textColor="#486E4A" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Register Button -->
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonRegister"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="32dp"
         android:text="Register"
-        android:padding="12dp"
-        app:layout_constraintTop_toBottomOf="@id/editTextPassword"
+        android:textAllCaps="false"
+        android:textSize="16sp"
+        android:fontFamily="@font/montserrat_bold"
+        android:textColor="#FFFFFF"
+        app:cornerRadius="12dp"
+        android:backgroundTint="#86C28B"
+        app:layout_constraintTop_toBottomOf="@id/textInputLayoutPassword"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
+    <!-- Already have an account Link -->
     <TextView
         android:id="@+id/textViewLoginLink"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Already have an account? Login"
-        android:textColor="@color/design_default_color_primary"
+        android:layout_marginTop="24dp"
+        android:text="Already have an account? "
+        android:textSize="14sp"
+        android:fontFamily="@font/montserrat_regular"
+        android:textColor="#8B8B8B"
         app:layout_constraintTop_toBottomOf="@id/buttonRegister"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
+    <TextView
+        android:id="@+id/textViewLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:textSize="14sp"
+        android:fontFamily="@font/montserrat_bold"
+        android:textColor="#86C28B"
+        app:layout_constraintTop_toTopOf="@id/textViewLoginLink"
+        app:layout_constraintStart_toEndOf="@id/textViewLoginLink" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+

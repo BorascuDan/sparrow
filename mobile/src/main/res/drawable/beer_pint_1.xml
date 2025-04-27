@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="36dp"
+    android:viewportWidth="100"
+    android:viewportHeight="160">
+
+    <!-- Base element (Glass stand) -->
+    <path
+        android:fillColor="#C0D0D0D0"
+        android:pathData="M24,144 L76,144 Q80,144 80,148 L80,156 Q80,160 76,160 L24,160 Q20,160 20,156 L20,148 Q20,144 24,144 Z" />
+
+    <!-- Glass outer shape -->
+    <path
+        android:fillColor="#80D0D0D0"
+        android:pathData="M20,8 L80,8 Q85,8 85,13 L85,137 Q85,142 80,142 L20,142 Q15,142 15,137 L15,13 Q15,8 20,8 Z" />
+
+    <!-- Inner glass area (transparent) -->
+    <path
+        android:fillColor="#30FFFFFF"
+        android:pathData="M25,13 L75,13 Q78,13 78,16 L78,132 Q78,135 75,135 L25,135 Q22,135 22,132 L22,16 Q22,13 25,13 Z" />
+
+    <!-- Beer liquid - EDIT THIS TO CHANGE BEER LEVEL -->
+    <!-- Current fills 85% of glass. Adjust 'android:pathData' with lower height to make emptier -->
+    <path
+        android:fillColor="#E8A517"
+        android:pathData="M25,13 L75,13 Q78,13 78,16 L78,115 Q78,118 75,118 L25,118 Q22,118 22,115 L22,16 Q22,13 25,13 Z" />
+    <path
+        android:fillColor="#D78500"
+        android:pathData="M25,70 L75,70 Q78,70 78,73 L78,115 Q78,118 75,118 L25,118 Q22,118 22,115 L22,73 Q22,70 25,70 Z" />
+
+    <!-- Foam layer - EDIT THIS TO MATCH BEER LEVEL -->
+    <!-- Currently positioned on top of beer. Adjust 'android:pathData' with beer level -->
+    <path
+        android:fillColor="#FFFAF0"
+        android:pathData="M25,13 L75,13 Q78,13 78,16 L78,20 Q78,23 75,23 L25,23 Q22,23 22,20 L22,16 Q22,13 25,13 Z" />
+    <path
+        android:fillColor="#F5E7C6"
+        android:pathData="M25,20 L75,20 Q78,20 78,23 L78,33 Q78,36 75,36 L25,36 Q22,36 22,33 L22,23 Q22,20 25,20 Z" />
+
+    <!-- Glass rim highlight -->
+    <path
+        android:fillColor="#30FFFFFF"
+        android:pathData="M25,13 L75,13 Q78,13 78,16 L78,18 L22,18 L22,16 Q22,13 25,13 Z" />
+
+    <!-- Glass reflection highlight -->
+    <path
+        android:fillColor="#40FFFFFF"
+        android:pathData="M32,13 Q33,13 33.5,13.5 L33.5,112 Q33,112.5 32,112.5 L31,112.5 Q30,112.5 29.5,112 L29.5,13.5 Q30,13 31,13 Z" />
+
+    <!-- Foam bubbles - for detail -->
+    <path android:fillColor="#B0FFFBF0" android:pathData="M30,17 A4,4 0 1,1 38,17 A4,4 0 1,1 30,17" />
+    <path android:fillColor="#B0FFFBF0" android:pathData="M45,18 A5,5 0 1,1 55,18 A5,5 0 1,1 45,18" />
+    <path android:fillColor="#B0FFFBF0" android:pathData="M60,20 A3,3 0 1,1 66,20 A3,3 0 1,1 60,20" />
+    <path android:fillColor="#B0FFFBF0" android:pathData="M35,29 A6,6 0 1,1 47,29 A6,6 0 1,1 35,29" />
+    <path android:fillColor="#B0FFFBF0" android:pathData="M55,25 A4,4 0 1,1 63,25 A4,4 0 1,1 55,25" />
+
+    <!-- Beer bubbles - for detail -->
+    <path android:fillColor="#50FFFFFF" android:pathData="M30,50 A2,2 0 1,1 34,50 A2,2 0 1,1 30,50" />
+    <path android:fillColor="#50FFFFFF" android:pathData="M45,65 A3,3 0 1,1 51,65 A3,3 0 1,1 45,65" />
+    <path android:fillColor="#50FFFFFF" android:pathData="M60,90 A2,2 0 1,1 64,90 A2,2 0 1,1 60,90" />
+    <path android:fillColor="#50FFFFFF" android:pathData="M40,100 A2,2 0 1,1 44,100 A2,2 0 1,1 40,100" />
+    <path android:fillColor="#50FFFFFF" android:pathData="M50,80 A2,2 0 1,1 54,80 A2,2 0 1,1 50,80" />
+    <path android:fillColor="#50FFFFFF" android:pathData="M65,60 A3,3 0 1,1 71,60 A3,3 0 1,1 65,60" />
+    <path android:fillColor="#50FFFFFF" android:pathData="M35,75 A2,2 0 1,1 39,75 A2,2 0 1,1 35,75" />
+</vector>

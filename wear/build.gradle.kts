@@ -39,6 +39,8 @@ android {
 }
 
 dependencies {
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0") // Replace with the latest version
+    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation(libs.play.services.wearable)
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.ui)

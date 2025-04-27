@@ -1,19 +1,6 @@
+//ApiModels.kt
 package com.example.googleapp.models
 
-data class RegisterRequest(
-    val username: String,
-    val email: String,
-    val password: String
-)
-
-data class LoginRequest(
-    val email: String,
-    val password: String
-)
-
-data class LocationRequest(
-    val location: String
-)
 
 data class TemperatureResponse(
     val success: Boolean,
@@ -28,9 +15,9 @@ data class User(
     val email: String
 )
 
-// Generic ApiResponse that can handle different data types
 data class ApiResponse<T>(
     val success: Boolean,
+    val statusCode: Int,
     val message: String,
     val data: T?
 )

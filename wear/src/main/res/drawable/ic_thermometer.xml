@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    
+    <!-- Thermometer tube -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:strokeColor="#000000"
+        android:strokeWidth="0.5"
+        android:pathData="M13,4L13,14.5C14.2,15.2 15,16.5 15,18C15,20.2 13.2,22 11,22C8.8,22 7,20.2 7,18C7,16.5 7.8,15.2 9,14.5L9,4C9,2.9 9.9,2 11,2C12.1,2 13,2.9 13,4Z" />
+    
+    <!-- Mercury/fluid in thermometer -->
+    <path
+        android:fillColor="#FF5252"
+        android:pathData="M11,15.5C9.3,15.5 8,16.8 8,18.5C8,20.2 9.3,21.5 11,21.5C12.7,21.5 14,20.2 14,18.5C14,16.8 12.7,15.5 11,15.5Z" />
+    
+    <path
+        android:fillColor="#FF5252"
+        android:pathData="M10,15.5L10,8L12,8L12,15.5L10,15.5Z" />
+    
+    <!-- Temperature markings -->
+    <path
+        android:strokeColor="#000000"
+        android:strokeWidth="0.5"
+        android:pathData="M9,6L10.5,6" />
+    
+    <path
+        android:strokeColor="#000000"
+        android:strokeWidth="0.5"
+        android:pathData="M9,8L10.5,8" />
+    
+    <path
+        android:strokeColor="#000000"
+        android:strokeWidth="0.5"
+        android:pathData="M9,10L10.5,10" />
+    
+    <path
+        android:strokeColor="#000000"
+        android:strokeWidth="0.5"
+        android:pathData="M9,12L10.5,12" />
+    
+    <!-- Light reflection -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.3"
+        android:pathData="M9.5,4.5L9.5,14C9.5,14 10,14.5 10,15L10,4C10,3.5 9.7,3.7 9.5,4.5Z" />
+</vector>

@@ -1,5 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+        <color name="background">#FFFFFF</color>
+        <color name="primaryText">#212121</color>
+        <color name="hintText">#9E9E9E</color>
+        <color name="inputBackground">#F5F5F5</color>
+        <color name="inputBorder">#E0E0E0</color>
+        <color name="primaryButton">#3F51B5</color>
+        <color name="buttonText">#FFFFFF</color>
+        <color name="linkText">#3F51B5</color>
+    <!-- Base application colors -->
+    <color name="primary">#86C28B</color>
+    <color name="primary_dark">#486E4A</color>
+    <color name="primary_light">#C1F0C1</color>
+    <color name="accent">#E6F7FF</color>
+
+    <!-- Text colors -->
+    <color name="text_primary">#486E4A</color>
+    <color name="text_secondary">#8B8B8B</color>
+    <color name="text_hint">#ACACAC</color>
+
+    <!-- Background colors -->
+    <color name="background_light">#F8F8F8</color>
+    <color name="background_white">#FFFFFF</color>
+
+    <!-- Other colors -->
+    <color name="divider">#E5E5E5</color>
+
 </resources>
