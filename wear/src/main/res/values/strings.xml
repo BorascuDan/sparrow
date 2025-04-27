@@ -1,8 +1,5 @@
 <resources>
-    <string name="app_name">google.app</string>
-    <!--
-    This string is used for square devices and overridden by hello_world in
-    values-round/strings.xml for round devices.
-    -->
-    <string name="hello_world">From the Square world,\nHello, %1$s!</string>
+    <string name="app_name">Watch Notifications</string>
+    <string name="channel_name">Watch Alerts</string>
+    <string name="channel_description">Notifications for Wear OS</string>
 </resources>

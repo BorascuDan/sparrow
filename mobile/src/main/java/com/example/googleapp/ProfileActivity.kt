@@ -74,7 +74,7 @@ class ProfileActivity : AppCompatActivity() {
 
     private fun displayHardcodedUserData() {
         // Set hardcoded username
-        textViewUsername.text = "Username: JohnDoe"
+        textViewUsername.text = "Username: Dan"
 
         // Set hardcoded profile data using the values from the original code
         textViewAge.text = "Age: 24"

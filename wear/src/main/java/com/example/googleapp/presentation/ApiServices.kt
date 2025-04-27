@@ -1,6 +1,7 @@
 //ApiServices.kt
 package com.example.googleapp.api
 
+import android.location.LocationRequest
 import com.example.googleapp.models.*
 import retrofit2.Call
 import retrofit2.http.Body
@@ -9,6 +10,13 @@ import retrofit2.http.Header
 import retrofit2.http.POST
 
 interface ApiService {
+    @GET("api/users/get")
+    fun getUserData(@Header("Authorization") token: String): Call<ApiResponse<String>>
+
     @GET("api/senzor/lastTemp")
     fun getLastTemp(@Header("Authorization") token: String): Call<TemperatureResponse>
+
+    @GET("api/drink/pahar")
+    fun getTotalDrinks(@Header("Authorization") token: String): Call<ApiResponse<Int>>
+
 }
