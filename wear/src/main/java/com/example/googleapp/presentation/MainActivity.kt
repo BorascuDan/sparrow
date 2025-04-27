@@ -494,7 +494,7 @@ fun WearApp(
                         textAlign = TextAlign.Center,
                         modifier = Modifier
                             .align(Alignment.BottomCenter)
-                            .padding(bottom = 32.dp)
+                            .padding(bottom = 20.dp)
                     )
                 }
             }

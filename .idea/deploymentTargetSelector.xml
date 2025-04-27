@@ -4,10 +4,10 @@
     <selectionStates>
       <SelectionState runConfigName="mobile">
         <option name="selectionMode" value="DROPDOWN" />
-        <DropdownSelection timestamp="2025-04-27T06:45:31.671584863Z">
+        <DropdownSelection timestamp="2025-04-27T08:02:44.791080479Z">
           <Target type="DEFAULT_BOOT">
             <handle>
-              <DeviceId pluginId="LocalEmulator" identifier="path=/home/dan/.android/avd/Wear_OS_Small_Round.avd" />
+              <DeviceId pluginId="PhysicalDevice" identifier="serial=27ac31b0e5217ece" />
             </handle>
           </Target>
         </DropdownSelection>
