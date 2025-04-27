@@ -36,9 +36,10 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import androidx.fragment.app.FragmentActivity
+import kotlinx.coroutines.*
 import kotlin.random.Random
 
-class MainActivity : androidx.fragment.app.FragmentActivity(), DataClient.OnDataChangedListener,
+class MainActivity : FragmentActivity(), DataClient.OnDataChangedListener,
     AmbientModeSupport.AmbientCallbackProvider {
 
     private var authToken by mutableStateOf("")
@@ -50,6 +51,7 @@ class MainActivity : androidx.fragment.app.FragmentActivity(), DataClient.OnData
     private var isAmbient by mutableStateOf(false)
 
     private lateinit var ambientController: AmbientModeSupport.AmbientController
+    private val fetchScope = CoroutineScope(Dispatchers.Main + SupervisorJob()) // Coroutine scope for fetching
 
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
@@ -74,6 +76,25 @@ class MainActivity : androidx.fragment.app.FragmentActivity(), DataClient.OnData
                 isAmbient = isAmbient
             )
         }
+
+        // Start periodic data fetching
+        startPeriodicFetching()
+    }
+
+    private fun startPeriodicFetching() {
+        fetchScope.launch {
+            while (isActive) {
+                if (authToken.isNotEmpty() && !isAmbient) { // Avoid fetching in ambient mode
+                    fetchUserData()
+                }
+                delay(5000) // Wait 5 seconds before the next fetch
+            }
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        fetchScope.cancel() // Cancel the coroutine scope when the activity is destroyed
     }
 
     override fun getAmbientCallback(): AmbientModeSupport.AmbientCallback {
@@ -92,13 +113,10 @@ class MainActivity : androidx.fragment.app.FragmentActivity(), DataClient.OnData
 
             override fun onUpdateAmbient() {
                 super.onUpdateAmbient()
-                // Refresh data periodically if needed in ambient mode
-                // For example, update every few minutes
+                // Optional: You can fetch data here if needed in ambient mode
             }
         }
     }
-
-
 
     override fun onResume() {
         super.onResume()
@@ -127,17 +145,7 @@ class MainActivity : androidx.fragment.app.FragmentActivity(), DataClient.OnData
                     }
 
                     // Update UI with new data
-                    setContent {
-                        WearApp(
-                            authToken = authToken,
-                            username = username,
-                            temperature = temperature,
-                            drinkCount = drinkCount,
-                            isLoading = isLoading,
-                            errorMessage = errorMessage,
-                            isAmbient = isAmbient
-                        )
-                    }
+                    updateUI()
                 }
             }
         }
@@ -158,20 +166,9 @@ class MainActivity : androidx.fragment.app.FragmentActivity(), DataClient.OnData
                         }
 
                         // Update UI with stored data
-                        setContent {
-                            WearApp(
-                                authToken = authToken,
-                                username = username,
-                                temperature = temperature,
-                                drinkCount = drinkCount,
-                                isLoading = isLoading,
-                                errorMessage = errorMessage,
-                                isAmbient = isAmbient
-                            )
-                        }
+                        updateUI()
                     }
                 }
-
                 dataItems.release()
             }
     }
@@ -250,6 +247,7 @@ class MainActivity : androidx.fragment.app.FragmentActivity(), DataClient.OnData
     }
 }
 
+// WearApp composable remains unchanged
 @Composable
 fun WearApp(
     authToken: String,
@@ -359,7 +357,7 @@ fun WearApp(
                         }
                     }
                 }
-            } else {
+            } else{
                 // Show simplified message in ambient mode if not logged in
                 if (isAmbient) {
                     Text(
@@ -371,10 +369,121 @@ fun WearApp(
                 } else {
                     // Show beer glass if not logged in (regular mode)
                     Canvas(
-                        modifier = Modifier.fillMaxSize()
+                        modifier = Modifier
+                            .fillMaxSize() // Fill the entire screen
                     ) {
-                        // (Keep your existing Canvas code here)
-                        // ...
+                        val canvasWidth = size.width
+                        val canvasHeight = size.height
+
+                        // Define pint glass dimensions
+                        val glassWidth = canvasWidth * 0.3f // 30% of screen width
+                        val glassHeight = glassWidth * 1.6f // Proportional height
+                        val glassThickness = glassWidth * 0.05f
+
+                        // Center coordinates
+                        val centerX = canvasWidth / 2
+                        val centerY = canvasHeight / 2
+
+                        // Glass top-left position (centered)
+                        val glassLeft = centerX - (glassWidth / 2)
+                        val glassTop = centerY - (glassHeight / 2)
+
+                        // Draw glass - slightly transparent
+                        drawRoundRect(
+                            color = Color(0x80D0D0D0), // Semi-transparent glass
+                            topLeft = Offset(glassLeft, glassTop),
+                            size = Size(glassWidth, glassHeight),
+                            cornerRadius = CornerRadius(glassWidth * 0.1f, glassWidth * 0.1f)
+                        )
+
+                        // Draw inner glass area
+                        drawRoundRect(
+                            color = Color(0x30FFFFFF), // Very light transparency
+                            topLeft = Offset(glassLeft + glassThickness, glassTop + glassThickness),
+                            size = Size(glassWidth - (glassThickness * 2), glassHeight - (glassThickness * 2)),
+                            cornerRadius = CornerRadius(glassWidth * 0.08f, glassWidth * 0.08f)
+                        )
+
+                        // Beer liquid - fills 85% of glass
+                        val beerHeight = (glassHeight - (glassThickness * 2)) * 0.85f
+                        drawRoundRect(
+                            brush = Brush.verticalGradient(
+                                colors = listOf(
+                                    Color(0xFFE8A517), // Lighter top
+                                    Color(0xFFD78500)  // Darker bottom
+                                )
+                            ),
+                            topLeft = Offset(glassLeft + glassThickness, glassTop + glassThickness),
+                            size = Size(glassWidth - (glassThickness * 2), beerHeight),
+                            cornerRadius = CornerRadius(glassWidth * 0.08f, glassWidth * 0.08f)
+                        )
+
+                        // Foam layer
+                        val foamHeight = (glassHeight - (glassThickness * 2)) * 0.15f
+                        drawRoundRect(
+                            brush = Brush.verticalGradient(
+                                colors = listOf(
+                                    Color(0xFFFFFAF0), // Top cream color
+                                    Color(0xFFF5E7C6)  // Bottom cream color
+                                )
+                            ),
+                            topLeft = Offset(glassLeft + glassThickness, glassTop + glassThickness),
+                            size = Size(glassWidth - (glassThickness * 2), foamHeight),
+                            cornerRadius = CornerRadius(glassWidth * 0.08f, 0f)
+                        )
+
+                        // Highlight on glass (reflection)
+                        val highlightWidth = glassWidth * 0.1f
+                        drawRoundRect(
+                            color = Color(0x40FFFFFF),
+                            topLeft = Offset(glassLeft + glassWidth * 0.15f, glassTop + glassThickness),
+                            size = Size(highlightWidth, glassHeight * 0.7f),
+                            cornerRadius = CornerRadius(highlightWidth / 2, highlightWidth / 2)
+                        )
+
+                        // Add bubbles in beer
+                        val random = Random(42) // Fixed seed for consistent bubbles
+                        repeat(20) {
+                            val bubbleSize = (3..8).random(random).toFloat()
+                            val bubbleX = glassLeft + glassThickness + random.nextFloat() * (glassWidth - glassThickness * 2 - bubbleSize)
+                            val bubbleY = glassTop + glassThickness + random.nextFloat() * (beerHeight - bubbleSize)
+
+                            drawCircle(
+                                color = Color(0x50FFFFFF),
+                                radius = bubbleSize,
+                                center = Offset(bubbleX, bubbleY)
+                            )
+                        }
+
+                        // Add foam details
+                        repeat(15) {
+                            val foamBubbleSize = (4..12).random(random).toFloat()
+                            val foamX = glassLeft + glassThickness + random.nextFloat() * (glassWidth - glassThickness * 2 - foamBubbleSize)
+                            val foamY = glassTop + glassThickness + random.nextFloat() * foamHeight
+
+                            drawCircle(
+                                color = Color(0xB0FFFBF0),
+                                radius = foamBubbleSize,
+                                center = Offset(foamX, foamY)
+                            )
+                        }
+
+                        // Glass base
+                        val baseWidth = glassWidth * 0.8f
+                        val baseHeight = glassHeight * 0.1f
+                        drawRoundRect(
+                            color = Color(0xC0D0D0D0),
+                            topLeft = Offset(centerX - (baseWidth / 2), glassTop + glassHeight),
+                            size = Size(baseWidth, baseHeight),
+                            cornerRadius = CornerRadius(baseWidth * 0.1f, baseWidth * 0.1f)
+                        )
+
+                        // Glass rim highlight
+                        drawRect(
+                            color = Color(0x30FFFFFF),
+                            topLeft = Offset(glassLeft + glassThickness, glassTop + glassThickness),
+                            size = Size(glassWidth - (glassThickness * 2), glassThickness)
+                        )
                     }
 
                     // Text overlay for not logged in state
